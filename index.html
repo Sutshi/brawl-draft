@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Brawl Draft Helper</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #111;
+      color: white;
+    }
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🎮 Brawl Stars Draft Helper</h1>
+
+<label>Choisis la map :</label><br>
+<select id="map">
+  <option>Gem Grab - Hard Rock Mine</option>
+  <option>Brawl Ball - Super Stadium</option>
+  <option>Heist - Safe Zone</option>
+</select>
+
+<br>
+
+<label>Choisis le rank :</label><br>
+<select id="rank">
+  <option>Gold</option>
+  <option>Mythic</option>
+  <option>Legendary</option>
+</select>
+
+<br>
+
+<button onclick="getPick()">💡 Trouver un pick</button>
+
+<div class="result" id="result"></div>
+
+<script>
+function getPick() {
+  let map = document.getElementById("map").value;
+  let rank = document.getElementById("rank").value;
+
+  let suggestion = "";
+
+  if (map.includes("Gem")) {
+    suggestion = "💎 Pick conseillé : Gene / Tara";
+  } else if (map.includes("Brawl Ball")) {
+    suggestion = "⚽ Pick conseillé : Fang / Shelly";
+  } else {
+    suggestion = "💰 Pick conseillé : Colt / Brock";
+  }
+
+  if (rank === "Legendary") {
+    suggestion += "<br>🔥 Meta compétitive recommandée";
+  }
+
+  document.getElementById("result").innerHTML = suggestion;
+}
+</script>
+
+</body>
+</html>
